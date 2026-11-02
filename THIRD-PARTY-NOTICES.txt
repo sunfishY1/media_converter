@@ -1,0 +1,97 @@
+MediaConverter — Third-Party Notices
+=====================================
+
+이 프로그램은 MediaConverter 자체의 소스 코드(이 저장소의 LICENSE 파일에 있는
+GNU General Public License v3 적용)와 함께, 아래의 타사(third-party)
+소프트웨어를 사용하거나 함께 배포합니다. 각 구성요소는 그 구성요소 자신의
+라이선스를 따릅니다. 배포 시 사용한 정확한 버전은 requirements.txt에 고정해
+두었습니다.
+
+
+1. PyQt6 (+ PyQt6-Qt6, PyQt6-sip)
+----------------------------------
+제공: Riverbank Computing Limited
+웹사이트: https://www.riverbankcomputing.com/software/pyqt/
+사용 버전: PyQt6 6.11.0, PyQt6-Qt6 6.11.2, PyQt6-sip 13.13.0
+라이선스: GNU General Public License v3 (GPL v3)
+
+MediaConverter는 PyQt6를 import하여 직접 링크(link)해서 사용합니다. PyQt6는
+Riverbank Computing이 GPL v3와 상업용(commercial) 라이선스로 이중 배포하는
+소프트웨어이며, 이 프로젝트는 GPL v3 조건으로 사용합니다. 이 때문에
+MediaConverter 전체(이 저장소의 소스 코드)도 GPL v3로 배포됩니다
+(이 저장소 루트의 LICENSE 파일 참고).
+
+- PyQt6 자체의 전체 라이선스 텍스트는 이 저장소의 LICENSE 파일과 동일한
+  GNU GPL v3이며, 원본은 다음에서 확인할 수 있습니다:
+  https://www.gnu.org/licenses/gpl-3.0.html
+- PyQt6-Qt6 wheel에는 Riverbank가 미리 빌드해둔 Qt6 공유 라이브러리(.dll)가
+  그대로 들어 있습니다. Qt6 자체의 공식 소스는 다음에서 받을 수 있습니다:
+  https://download.qt.io/official_releases/qt/
+- Corresponding Source(해당 버전의 소스)를 구할 수 있는 곳:
+  https://pypi.org/project/PyQt6/6.11.0/#files
+  https://pypi.org/project/PyQt6-Qt6/6.11.2/#files
+  https://pypi.org/project/PyQt6-sip/13.13.0/#files
+  https://www.riverbankcomputing.com/software/pyqt/download
+
+참고: 같은 가상환경에는 Qt Designer 작업용으로 PySide6/shiboken6도 설치되어
+있지만, MediaConverter.spec에서 `excludes=["PySide6", "shiboken6"]`로 빌드에서
+제외하므로 실제 배포되는 .exe 안에는 포함되지 않습니다.
+
+
+2. yt-dlp
+---------
+제공: yt-dlp 기여자 (yt-dlp contributors)
+웹사이트: https://github.com/yt-dlp/yt-dlp
+사용 버전: 2026.8.19
+라이선스: Unlicense (퍼블릭 도메인에 준하는 라이선스)
+
+MediaConverter는 yt-dlp를 Python 라이브러리로 import하여 사용합니다. yt-dlp는
+Unlicense로 배포되며, 저작권 제한 없이 자유롭게 사용·복제·수정·배포할 수
+있습니다. 전체 라이선스 원문은 다음에서 확인할 수 있습니다:
+https://github.com/yt-dlp/yt-dlp/blob/master/LICENSE
+https://unlicense.org/
+Corresponding Source: https://pypi.org/project/yt-dlp/2026.8.19/#files
+
+
+3. FFmpeg (ffmpeg.exe, ffprobe.exe) — bin\ 폴더에 동봉
+--------------------------------------------------------
+제공: FFmpeg 프로젝트 (https://ffmpeg.org)
+빌드 출처: BtbN/FFmpeg-Builds (GitHub Releases, 정적 Windows 빌드)
+          https://github.com/BtbN/FFmpeg-Builds
+사용한 빌드: ffmpeg-n9.0-latest-win64-gpl-9.0 (GPL 빌드, libx264 포함)
+라이선스: GNU General Public License v3 (이 바이너리에 포함된
+          구성요소 중 GPL로 배포되는 라이브러리(예: libx264) 때문에
+          전체 바이너리가 GPL로 배포됩니다. 바이너리에 동봉된
+          라이선스 전문은 bin\FFMPEG_LICENSE.txt 에 있으며, 이 저장소
+          루트의 LICENSE 파일과 동일한 내용입니다.)
+
+MediaConverter는 ffmpeg.exe/ffprobe.exe를 서브프로세스로 "실행"만 하고
+(링크하지 않음) 배포 편의를 위해 bin\ 폴더에 그 실행파일만 동봉합니다.
+MediaConverter 자체의 소스 코드는 이 때문에 ffmpeg의 라이선스 의무를 지지
+않지만(별도 프로세스로 호출하는 것은 "mere aggregation"), 동봉하는 ffmpeg
+바이너리 자체는 GPL로 배포되는 소프트웨어이므로, GPL이 요구하는 대로 다음을
+제공합니다.
+
+  - 바이너리와 동일한 라이선스 전문: bin\FFMPEG_LICENSE.txt (= 이 저장소의
+    LICENSE 파일)
+  - 해당 버전(corresponding source)을 구할 수 있는 곳: bin\SOURCE.txt 및
+      - 빌드 스크립트/설정: https://github.com/BtbN/FFmpeg-Builds
+      - FFmpeg 원본 소스: https://github.com/FFmpeg/FFmpeg
+        (사용한 빌드가 가리키는 FFmpeg 버전/커밋에 해당하는 소스)
+
+ffmpeg.exe/ffprobe.exe 바이너리 자체는 수정 없이 그대로(as-is) 가져와
+동봉한 것이며, MediaConverter 쪽에서 FFmpeg 소스를 수정하지 않았습니다.
+
+FFmpeg는 Fabrice Bellard의 상표(trademark)입니다. 이 프로젝트는 FFmpeg
+프로젝트의 공식 제품이 아니며, FFmpeg 프로젝트의 보증/인증을 받은 것도
+아닙니다 (단순히 해당 바이너리를 동봉해서 쓰는 것뿐입니다).
+
+
+4. 코덱 관련 특허(patent)에 대한 참고 사항
+-------------------------------------------
+위 라이선스들은 모두 "저작권(copyright)" 라이선스이며, H.264(libx264) 같은
+코덱에는 저작권과 별개로 특허가 걸려 있을 수 있습니다. 개인용/비영리
+오픈소스 배포 수준에서는 실무적으로 문제가 제기되는 경우가 거의 없지만,
+상업적으로 규모 있게 배포하게 될 경우 MPEG LA 등 특허 풀에서 별도의 특허
+라이선스를 요구할 수 있습니다. 이 문서는 법률 자문이 아니므로, 상업적 배포를
+고려한다면 별도로 법률 전문가의 확인을 받으시길 권합니다.

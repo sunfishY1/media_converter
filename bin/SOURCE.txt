@@ -1,0 +1,24 @@
+ffmpeg.exe / ffprobe.exe — 출처 및 Corresponding Source 안내
+=============================================================
+
+이 폴더의 ffmpeg.exe / ffprobe.exe는 FFmpeg 프로젝트(https://ffmpeg.org)의
+실행 파일을 수정 없이 그대로 동봉한 것입니다.
+
+빌드 출처 (정적 Windows 빌드):
+  https://github.com/BtbN/FFmpeg-Builds
+사용한 빌드 이름:
+  ffmpeg-n9.0-latest-win64-gpl-9.0  (GPL 빌드, libx264 포함)
+
+라이선스: GNU General Public License v3
+  - 이 폴더의 FFMPEG_LICENSE.txt 가 전체 라이선스 전문입니다
+    (이 저장소 루트의 LICENSE 파일과 동일).
+
+Corresponding Source (해당 버전의 소스 코드)를 구할 수 있는 곳:
+  - 빌드 스크립트/설정: https://github.com/BtbN/FFmpeg-Builds
+  - FFmpeg 원본 소스 저장소: https://github.com/FFmpeg/FFmpeg
+    (위 빌드가 가리키는 FFmpeg 버전/커밋에 해당하는 소스)
+
+자세한 설명은 이 저장소 루트의 THIRD-PARTY-NOTICES.txt를 참고하세요.
+
+FFmpeg는 Fabrice Bellard의 상표이며, 이 프로젝트는 FFmpeg 프로젝트의 공식
+제품이 아니고 FFmpeg 프로젝트의 보증/인증을 받지 않았습니다.
